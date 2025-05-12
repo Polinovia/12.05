@@ -16,18 +16,23 @@
 
     <hr>
 
-    <form action="" id="calculette">
+    <form action="" id="myForm" name="myForm">
        <label for="nb1">Nombre1</label> 
-       <input type="number" id="nb1" value="0">
+       <input type="number" id="nb1" name="number1" value="0">
        <label for="nb2">Nombre2</label> 
-       <input type="number" id="nb2" value="0">
+       <input type="number" id="nb2" name="number2" value="0">
        <button>Calculer</button>
     </form>
-
+<footer>
+  <p class="nb1"> autre nb1</p>
+  FormData
+</footer>
     <script defer>
+      const $formData = new FormData();
+      const myForm = document.getElementById("myForm")
+      formData = new FormData(myForm)
       const $myTitre1 = document.querySelector('#titre1')
       const $switchTitre = document.querySelector('#switch-titre')
-      const $buttonClick = document.querySelector('#calculette')
       const $number1 = document.getElementById('nb1')
       const $number2 = document.getElementById ('nb2')
       //console.log()
@@ -36,9 +41,9 @@
         console.log($switchTitre.href) 
         $myTitre1.innerHTML = "New <em>Text</em>"
       })
-    $buttonClick.addEventListener ('submit', e => {
+    $formData.addEventListener ('submit', e => {
       event.preventDefault()
-      console.log(parseInt($number1.value) + parseInt($number2.value))
+      console.log(parseInt(formData.get('number1')) + parseInt(formData.get('number2')))
     })
     </script>
 </body>
