@@ -1,51 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulaire</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
 </head>
-
 <body>
-  <h1 id="titre1">mon bo titre</h1>
-  <p><a href="https://google.be" id="switch-titre">Change titre</a></p>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem aliquid et quidem quod, recusandae, illum quae
-    incidunt exercitationem deserunt voluptas cupiditate? Explicabo, culpa illum voluptatum nisi possimus doloribus
-    libero obcaecati.</p>
+    <h1 id="titre1">Mon bÃ´ titre</h1>
+    <p><a href="https://google.be" id="switch-titre">Change titre</a></p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod fuga tempore non et veritatis adipisci ad temporibus itaque soluta, minima facilis praesentium dolorem laboriosam doloribus, minus perspiciatis, a totam nemo?</p>
 
     <hr>
 
-    <form action="" id="myForm" name="myForm">
-       <label for="nb1">Nombre1</label> 
-       <input type="number" id="nb1" name="number1" value="0">
-       <label for="nb2">Nombre2</label> 
-       <input type="number" id="nb2" name="number2" value="0">
-       <button>Calculer</button>
+    <form action="" id="calculette">
+        <label for="nb1">Nombre 1</label>
+        <input type="number" id="nb1" name="nb1">
+        <label for="nb2">Nombre 2</label>
+        <input type="number" id="nb2" name="nb2">
+        <button>Calculer</button>
     </form>
-<footer>
-  <p class="nb1"> autre nb1</p>
-  FormData
-</footer>
+    <p>Total : <span class="total">0</span></p>
+    
     <script defer>
-      const $formData = new FormData();
-      const myForm = document.getElementById("myForm")
-      formData = new FormData(myForm)
-      const $myTitre1 = document.querySelector('#titre1')
-      const $switchTitre = document.querySelector('#switch-titre')
-      const $number1 = document.getElementById('nb1')
-      const $number2 = document.getElementById ('nb2')
-      //console.log()
-      $switchTitre.addEventListener('click', event => {
-        event.preventDefault()
-        console.log($switchTitre.href) 
-        $myTitre1.innerHTML = "New <em>Text</em>"
-      })
-    $formData.addEventListener ('submit', e => {
-      event.preventDefault()
-      console.log(parseInt(formData.get('number1')) + parseInt(formData.get('number2')))
-    })
+        const $calculette = document.querySelector('#calculette')
+        const $total = document.querySelector('.total')
+
+        $calculette.addEventListener('submit', event => {
+            event.preventDefault()
+            const data = new FormData($calculette)
+            const total = parseInt(data.get('nb1')) + parseFloat(data.get('nb2'))
+            console.log(total)
+            $total.innerText = total
+        })
+        
     </script>
 </body>
-
 </html>
